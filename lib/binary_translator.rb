@@ -40,5 +40,21 @@ class BinaryTranslator
     end.join
   end
 
+  def translate_to_text(binary_string)
+    slice_into_binaries(binary_string).map! do |binary|
+      if binary != "000000"
+       @alpha_to_binary.invert[binary]
+     else
+       " "
+     end
+    end.join
+  end
 
+  def slice_into_binaries(binary_string)
+    binaries = []
+    while binary_string.length > 0 do
+      binaries << binary_string.slice!(0..5)
+    end
+    return binaries
+  end
 end
