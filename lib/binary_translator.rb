@@ -29,4 +29,16 @@ class BinaryTranslator
       "z" => "011010"
     }
   end
+
+  def translate(letter_string)
+    letter_string.split(//).map! do |letter|
+      if letter == " "
+        "000000"
+      elsif ("a".."z").include?(letter.downcase)
+        @alpha_to_binary[letter.downcase]
+      end
+    end.join
+  end
+
+
 end
